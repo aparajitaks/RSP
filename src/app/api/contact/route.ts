@@ -101,9 +101,12 @@ export async function POST(request: NextRequest) {
     const sanitizedMessage = sanitize(message);
     const sanitizedPhone = phone ? sanitize(phone) : 'Not provided';
 
+    const fromEmail = process.env.FROM_EMAIL || 'onboarding@resend.dev';
+    const toEmail = process.env.CONTACT_EMAIL || 'contact@rajshamani.com';
+
     const { error } = await resend.emails.send({
-      from: 'Raj Shamani Website <onboarding@resend.dev>',
-      to: ['contact@rajshamani.com'],
+      from: `Raj Shamani Website <${fromEmail}>`,
+      to: [toEmail],
       subject: `[Website] ${subject} — ${sanitizedName}`,
       html: `
         <div style="font-family: 'Inter', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a0a; color: #ffffff; padding: 32px; border-radius: 16px;">

@@ -21,6 +21,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://rajshamani.com'),
   title: 'Raj Shamani — Entrepreneur, Podcaster, Author & Speaker',
   description:
     'Raj Shamani is an Indian entrepreneur, bestselling author of "Build Don\'t Talk", host of India\'s #1 business podcast "Figuring Out", TEDx & UN speaker, and founder of Shamani Industries.',
