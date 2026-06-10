@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   RAJ SHAMANI — Dark Luxury Design System
+   ======================================== */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #0a0a0a;
+    color: #ffffff;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(212, 168, 83, 0.3);
+    color: #ffffff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #d4a853, #f0d48a);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #f0d48a;
+  }
+}
+
+@layer components {
+  /* Gold gradient text */
+  .gold-text {
+    background: linear-gradient(135deg, #d4a853, #f0d48a, #d4a853);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Gold gradient border */
+  .gold-border {
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+
+  .gold-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, #d4a853, #f0d48a, #d4a853);
+    border-radius: inherit;
+    z-index: -1;
+  }
+
+  /* Glassmorphism card */
+  .glass-card {
+    background: rgba(26, 26, 26, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 168, 83, 0.15);
+    border-radius: 16px;
+  }
+
+  /* Gold glow button */
+  .btn-gold {
+    background: linear-gradient(135deg, #d4a853, #f0d48a, #d4a853);
+    color: #0a0a0a;
+    font-weight: 700;
+    padding: 14px 32px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    letter-spacing: 0.025em;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-gold::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #f0d48a, #d4a853, #f0d48a);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .btn-gold:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(212, 168, 83, 0.5);
+  }
+
+  .btn-gold:hover::before {
+    opacity: 1;
+  }
+
+  /* Outline button */
+  .btn-outline-gold {
+    border: 2px solid #d4a853;
+    color: #d4a853;
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    letter-spacing: 0.025em;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline-gold:hover {
+    background: rgba(212, 168, 83, 0.1);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(212, 168, 83, 0.3);
+  }
+
+  /* Section spacing */
+  .section-padding {
+    @apply px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24 py-20 md:py-32;
+  }
+
+  /* Noise/grain overlay */
+  .grain-overlay {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    animation: grain 8s steps(10) infinite;
+  }
+
+  /* Section divider */
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(212, 168, 83, 0.3),
+      transparent
+    );
+  }
+
+  /* Card hover glow */
+  .card-glow {
+    transition: all 0.4s ease;
+  }
+
+  .card-glow:hover {
+    border-color: rgba(212, 168, 83, 0.4);
+    box-shadow: 0 0 40px rgba(212, 168, 83, 0.1);
+  }
+
+  /* Toast notifications */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 10000;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-weight: 500;
+    animation: slideInToast 0.4s ease;
+  }
+
+  .toast-success {
+    background: rgba(22, 163, 74, 0.9);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #ffffff;
+  }
+
+  .toast-error {
+    background: rgba(220, 38, 38, 0.9);
+    border: 1px solid rgba(248, 113, 113, 0.3);
+    color: #ffffff;
+  }
+
+  @keyframes slideInToast {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
